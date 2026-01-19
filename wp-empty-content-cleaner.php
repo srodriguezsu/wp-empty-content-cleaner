@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Empty Posts & Pages Cleaner
  * Description: Lists empty posts/pages and allows selective deletion.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Intfinity
  */
 

@@ -1,0 +1,1 @@
+# wp-empty-content-cleaner

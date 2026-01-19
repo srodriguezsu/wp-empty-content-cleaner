@@ -21,6 +21,7 @@ function ecc_admin_page() {
                     <tr>
                         <th width="30"></th>
                         <th>ID</th>
+                        <th>Title</th>
                         <th>Type</th>
                         <th>Date</th>
                     </tr>
@@ -32,6 +33,7 @@ function ecc_admin_page() {
                                 <input type="checkbox" name="delete_ids[]" value="<?= esc_attr($post->ID) ?>">
                             </td>
                             <td><?= esc_html($post->ID) ?></td>
+                            <td><?= esc_html($post->post_title) ?></td>
                             <td><?= esc_html($post->post_type) ?></td>
                             <td><?= esc_html($post->post_date) ?></td>
                         </tr>

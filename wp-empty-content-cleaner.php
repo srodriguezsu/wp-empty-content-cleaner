@@ -2,12 +2,18 @@
 /**
  * Plugin Name: Empty Posts & Pages Cleaner
  * Description: Lists empty posts/pages and allows selective deletion.
- * Version: 1.0.0
+ * Version: 1.0.3
  * Author: Intfinity
  */
 
 if (!defined('ABSPATH')) {
     exit;
+}
+
+// Load admin-only files
+if (is_admin()) {
+    require_once plugin_dir_path(__FILE__) . 'includes/admin-page.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/delete-handler.php';
 }
 
 // Admin menu
@@ -20,6 +26,7 @@ add_action('admin_menu', function () {
         'ecc_admin_page'
     );
 });
+
 function ecc_get_empty_posts() {
     global $wpdb;
 
@@ -29,6 +36,5 @@ function ecc_get_empty_posts() {
         WHERE post_type IN ('post','page')
           AND post_status = 'publish'
           AND TRIM(COALESCE(post_content,'')) = ''
-          AND TRIM(COALESCE(post_title,'')) = ''
     ");
 }

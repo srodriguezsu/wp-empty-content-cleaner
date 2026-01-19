@@ -10,11 +10,15 @@ add_action('admin_init', function () {
 
     check_admin_referer('ecc_delete_nonce');
 
-    foreach ($_POST['delete_ids'] as $id) {
-        wp_delete_post((int)$id, true);
+    // Ensure we have an array and sanitize IDs
+    $ids = (array) $_POST['delete_ids'];
+    $ids = array_map('absint', $ids);
+    $ids = array_filter($ids); // remove zeros / falsy values
+
+    foreach ($ids as $id) {
+        wp_delete_post($id, true);
     }
 
     wp_redirect(admin_url('tools.php?page=empty-content-cleaner'));
     exit;
 });
-
